@@ -12,7 +12,7 @@ struct TabbarView: View {
     
     var body: some View {
         TabView(selection: $selection) {
-            Text("1")
+            Text("카메라")
                 .tabItem {
                     Image(systemName: "barcode.viewfinder")
                     Text("대여")
@@ -31,7 +31,7 @@ struct TabbarView: View {
     }
 }
 
-struct SearchView: View {
+/*struct SearchView: View {
     @Binding var text : String //Binding은 외부에서 값을 바인딩시킬수있다.
     @State var editText : Bool = false
     
@@ -85,16 +85,27 @@ struct SearchView: View {
         }
     }
 }
+struct Filter : View {
+     @State var text : String = ""
+     
+     var body :some View{
+         VStack{
+             BookList(text: self.$text)
+             List((0..<20).filter({"\($0)".contains(self.text) || self.text.isEmpty}), id : \.self){ i in
+                 Text("\(i)")
+             }
+         }
+     }
+}
+*/
 
 struct Filter : View {
     @State var text : String = ""
     
     var body :some View{
         VStack{
-            SearchView(text: self.$text)
-            List((0..<20).filter({"\($0)".contains(self.text) || self.text.isEmpty}), id : \.self){ i in
-                Text("\(i)")
-            }
+            BookList(text: self.$text)
+            
         }
     }
 }
@@ -102,5 +113,51 @@ struct Filter : View {
 struct TabbarView_Previews: PreviewProvider {
     static var previews: some View {
         TabbarView()
+    }
+}
+
+struct BookList: View {
+    @Binding var text :String
+    @State var editText : Bool = false
+    let bookMakers = BookMaker.all()
+
+    var body: some View {
+        VStack {
+            TextField("검색어를 입력하세요" , text : self.$text)
+                //hint와 태두리에 간격을 띄우기위해 15정도의 간격을주고
+                .padding(15)
+                //양옆은 추가로 15를 더줌
+                .padding(.horizontal, 15)
+                //배경색상은 자유롭게선택
+                .background(Color(.systemGray6))
+                //검색창이 너무각지면 딱딱해보이기때문에 모서리를 둥글게
+                //숫자는 취향것
+                .cornerRadius(15)
+            List(self.bookMakers.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.name) { bookMaker in
+                NavigationLink(destination: BookMarkerDetail(bookMaker: bookMaker)) {
+                    BookMakerCell(bookMaker: bookMaker)
+                }
+            }
+        }
+        
+    }
+}
+
+struct BookMakerCell: View {
+    
+    let bookMaker: BookMaker
+
+    var body: some View {
+        HStack {
+            Image(bookMaker.imageUrl)
+                    .resizable()
+                    .frame(width: 100, height: 100)
+                    .cornerRadius(10)
+
+            VStack(alignment: .leading) {
+                Text(bookMaker.name).font(.largeTitle)
+                Text("\(bookMaker.place)")
+            }
+        }
     }
 }

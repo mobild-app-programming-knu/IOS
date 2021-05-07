@@ -10,11 +10,13 @@
 		5E00E0D526398ECE00210B81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D426398ECE00210B81 /* AppDelegate.swift */; };
 		5E00E0D726398ECE00210B81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D626398ECE00210B81 /* SceneDelegate.swift */; };
 		5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D826398ECE00210B81 /* ContentView.swift */; };
-		5E00E0DB26398ED300210B81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E00E0DA26398ED300210B81 /* Assets.xcassets */; };
 		5E00E0DE26398ED300210B81 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E00E0DD26398ED300210B81 /* Preview Assets.xcassets */; };
 		5E00E0E126398ED300210B81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E00E0DF26398ED300210B81 /* LaunchScreen.storyboard */; };
 		5E00E0E926398EF400210B81 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0E826398EF400210B81 /* AuthView.swift */; };
 		5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0EA2639992500210B81 /* TabbarView.swift */; };
+		5EA7F288264531E20091ED9E /* BookMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA7F287264531E20091ED9E /* BookMaker.swift */; };
+		5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA7F289264532010091ED9E /* BookMarkerDetail.swift */; };
+		5EA7F28C264532B90091ED9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7F28B264532B90091ED9E /* Assets.xcassets */; };
 		5EE39023263E9465001F0A12 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE39022263E9465001F0A12 /* MypageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,12 +25,14 @@
 		5E00E0D426398ECE00210B81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E00E0D626398ECE00210B81 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5E00E0D826398ECE00210B81 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		5E00E0DA26398ED300210B81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E00E0DD26398ED300210B81 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E00E0E026398ED300210B81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E00E0E226398ED300210B81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E00E0E826398EF400210B81 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		5E00E0EA2639992500210B81 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
+		5EA7F287264531E20091ED9E /* BookMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMaker.swift; sourceTree = "<group>"; };
+		5EA7F289264532010091ED9E /* BookMarkerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkerDetail.swift; sourceTree = "<group>"; };
+		5EA7F28B264532B90091ED9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/BookList/Assets.xcassets; sourceTree = "<group>"; };
 		5EE39022263E9465001F0A12 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,7 +72,9 @@
 				5E00E0E826398EF400210B81 /* AuthView.swift */,
 				5E00E0EA2639992500210B81 /* TabbarView.swift */,
 				5EE39022263E9465001F0A12 /* MypageView.swift */,
-				5E00E0DA26398ED300210B81 /* Assets.xcassets */,
+				5EA7F289264532010091ED9E /* BookMarkerDetail.swift */,
+				5EA7F287264531E20091ED9E /* BookMaker.swift */,
+				5EA7F28B264532B90091ED9E /* Assets.xcassets */,
 				5E00E0DF26398ED300210B81 /* LaunchScreen.storyboard */,
 				5E00E0E226398ED300210B81 /* Info.plist */,
 				5E00E0DC26398ED300210B81 /* Preview Content */,
@@ -142,8 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E00E0E126398ED300210B81 /* LaunchScreen.storyboard in Resources */,
+				5EA7F28C264532B90091ED9E /* Assets.xcassets in Resources */,
 				5E00E0DE26398ED300210B81 /* Preview Assets.xcassets in Resources */,
-				5E00E0DB26398ED300210B81 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,11 +161,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */,
+				5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */,
 				5E00E0D526398ECE00210B81 /* AppDelegate.swift in Sources */,
 				5E00E0D726398ECE00210B81 /* SceneDelegate.swift in Sources */,
 				5EE39023263E9465001F0A12 /* MypageView.swift in Sources */,
 				5E00E0E926398EF400210B81 /* AuthView.swift in Sources */,
 				5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */,
+				5EA7F288264531E20091ED9E /* BookMaker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +308,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QRLibrary/Preview Content\"";
-				DEVELOPMENT_TEAM = SK7YVJMSSJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QRLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -321,7 +329,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QRLibrary/Preview Content\"";
-				DEVELOPMENT_TEAM = SK7YVJMSSJ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QRLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
