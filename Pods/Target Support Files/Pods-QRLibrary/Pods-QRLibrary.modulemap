@@ -1,0 +1,6 @@
+framework module Pods_QRLibrary {
+  umbrella header "Pods-QRLibrary-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C5D90DD84730FD2660813C1 /* Pods_QRLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A271FA0D755625DF058272E /* Pods_QRLibrary.framework */; };
 		5E00E0D526398ECE00210B81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D426398ECE00210B81 /* AppDelegate.swift */; };
 		5E00E0D726398ECE00210B81 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D626398ECE00210B81 /* SceneDelegate.swift */; };
 		5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0D826398ECE00210B81 /* ContentView.swift */; };
@@ -16,8 +17,11 @@
 		5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0EA2639992500210B81 /* TabbarView.swift */; };
 		5EA7F288264531E20091ED9E /* BookMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA7F287264531E20091ED9E /* BookMaker.swift */; };
 		5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA7F289264532010091ED9E /* BookMarkerDetail.swift */; };
-		5EA7F28C264532B90091ED9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EA7F28B264532B90091ED9E /* Assets.xcassets */; };
 		5EE39023263E9465001F0A12 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE39022263E9465001F0A12 /* MypageView.swift */; };
+		EB5EE703264A7B9600398319 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE702264A7B9600398319 /* RequestType.swift */; };
+		EB5EE705264ADEEA00398319 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE704264ADEEA00398319 /* ResponseType.swift */; };
+		EBC9A7252649806B00E89DCE /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC9A7242649806B00E89DCE /* RestClient.swift */; };
+		EBE73DF22647B11500E130FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE73DF12647B11500E130FF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +36,14 @@
 		5E00E0EA2639992500210B81 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		5EA7F287264531E20091ED9E /* BookMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMaker.swift; sourceTree = "<group>"; };
 		5EA7F289264532010091ED9E /* BookMarkerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkerDetail.swift; sourceTree = "<group>"; };
-		5EA7F28B264532B90091ED9E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../Downloads/BookList/Assets.xcassets; sourceTree = "<group>"; };
 		5EE39022263E9465001F0A12 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
+		7A271FA0D755625DF058272E /* Pods_QRLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2A3B374FB530B9A2CF3AAE /* Pods-QRLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRLibrary.debug.xcconfig"; path = "Target Support Files/Pods-QRLibrary/Pods-QRLibrary.debug.xcconfig"; sourceTree = "<group>"; };
+		9E93B2F7DD00D0999C19B5C7 /* Pods-QRLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRLibrary.release.xcconfig"; path = "Target Support Files/Pods-QRLibrary/Pods-QRLibrary.release.xcconfig"; sourceTree = "<group>"; };
+		EB5EE702264A7B9600398319 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
+		EB5EE704264ADEEA00398319 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
+		EBC9A7242649806B00E89DCE /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
+		EBE73DF12647B11500E130FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +51,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C5D90DD84730FD2660813C1 /* Pods_QRLibrary.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0121B350CDB66044ACBDF9A8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A271FA0D755625DF058272E /* Pods_QRLibrary.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5E00E0C826398ECE00210B81 = {
 			isa = PBXGroup;
 			children = (
 				5E00E0D326398ECE00210B81 /* QRLibrary */,
 				5E00E0D226398ECE00210B81 /* Products */,
+				7901CC124E2E82E413C5406C /* Pods */,
+				0121B350CDB66044ACBDF9A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +87,7 @@
 		5E00E0D326398ECE00210B81 /* QRLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				EBE73DF12647B11500E130FF /* Assets.xcassets */,
 				5E00E0D426398ECE00210B81 /* AppDelegate.swift */,
 				5E00E0D626398ECE00210B81 /* SceneDelegate.swift */,
 				5E00E0D826398ECE00210B81 /* ContentView.swift */,
@@ -74,10 +96,12 @@
 				5EE39022263E9465001F0A12 /* MypageView.swift */,
 				5EA7F289264532010091ED9E /* BookMarkerDetail.swift */,
 				5EA7F287264531E20091ED9E /* BookMaker.swift */,
-				5EA7F28B264532B90091ED9E /* Assets.xcassets */,
 				5E00E0DF26398ED300210B81 /* LaunchScreen.storyboard */,
 				5E00E0E226398ED300210B81 /* Info.plist */,
 				5E00E0DC26398ED300210B81 /* Preview Content */,
+				EBC9A7242649806B00E89DCE /* RestClient.swift */,
+				EB5EE702264A7B9600398319 /* RequestType.swift */,
+				EB5EE704264ADEEA00398319 /* ResponseType.swift */,
 			);
 			path = QRLibrary;
 			sourceTree = "<group>";
@@ -90,6 +114,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		7901CC124E2E82E413C5406C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7D2A3B374FB530B9A2CF3AAE /* Pods-QRLibrary.debug.xcconfig */,
+				9E93B2F7DD00D0999C19B5C7 /* Pods-QRLibrary.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -97,9 +130,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5E00E0E526398ED300210B81 /* Build configuration list for PBXNativeTarget "QRLibrary" */;
 			buildPhases = (
+				4B2E8EA71A435B2250E6FBDC /* [CP] Check Pods Manifest.lock */,
 				5E00E0CD26398ECE00210B81 /* Sources */,
 				5E00E0CE26398ECE00210B81 /* Frameworks */,
 				5E00E0CF26398ECE00210B81 /* Resources */,
+				E352A77DBCA3134DADA9A3C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -148,12 +183,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E00E0E126398ED300210B81 /* LaunchScreen.storyboard in Resources */,
-				5EA7F28C264532B90091ED9E /* Assets.xcassets in Resources */,
+				EBE73DF22647B11500E130FF /* Assets.xcassets in Resources */,
 				5E00E0DE26398ED300210B81 /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4B2E8EA71A435B2250E6FBDC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QRLibrary-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E352A77DBCA3134DADA9A3C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRLibrary/Pods-QRLibrary-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QRLibrary/Pods-QRLibrary-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QRLibrary/Pods-QRLibrary-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5E00E0CD26398ECE00210B81 /* Sources */ = {
@@ -163,11 +240,14 @@
 				5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */,
 				5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */,
 				5E00E0D526398ECE00210B81 /* AppDelegate.swift in Sources */,
+				EB5EE705264ADEEA00398319 /* ResponseType.swift in Sources */,
 				5E00E0D726398ECE00210B81 /* SceneDelegate.swift in Sources */,
+				EBC9A7252649806B00E89DCE /* RestClient.swift in Sources */,
 				5EE39023263E9465001F0A12 /* MypageView.swift in Sources */,
 				5E00E0E926398EF400210B81 /* AuthView.swift in Sources */,
 				5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */,
 				5EA7F288264531E20091ED9E /* BookMaker.swift in Sources */,
+				EB5EE703264A7B9600398319 /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,6 +383,7 @@
 		};
 		5E00E0E626398ED300210B81 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D2A3B374FB530B9A2CF3AAE /* Pods-QRLibrary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -324,6 +405,7 @@
 		};
 		5E00E0E726398ED300210B81 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9E93B2F7DD00D0999C19B5C7 /* Pods-QRLibrary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
