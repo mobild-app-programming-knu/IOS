@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  TabbarView.swift
 //  QRLibrary
 //
 //  Created by unme97 on 2021/04/28.
@@ -14,7 +14,7 @@ struct TabbarView: View {
         TabView(selection: $selection) {
             Text("카메라")
                 .tabItem {
-                    Image(systemName: "barcode.viewfinder")
+                    Image(systemName: "qrcode.viewfinder")
                     Text("대여")
                 }.tag(1)
             Filter()
