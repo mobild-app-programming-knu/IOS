@@ -12,6 +12,7 @@ import Alamofire
 let baseURL = "http://ec2-52-79-203-88.ap-northeast-2.compute.amazonaws.com:3000/api"
 let localURL = "http://localhost:9090/api"
 
+
 func doLogin(data:LoginRequest, successCallback: @escaping (LoginResponse) -> Void, failedCallback: @escaping (ErrorResponse) -> Void){
     doRestTask(requestURL: baseURL + "/user/login", method: .post, data: data, successCallback: successCallback, failedCallback: failedCallback)
 }

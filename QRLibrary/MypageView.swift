@@ -42,16 +42,16 @@ struct ListHeader: View {
             HStack(alignment: .center) {
                 Image(systemName: "person.circle")
                     .resizable()
-                    .offset(y: 3)
                     .frame(width: 56, height: 56, alignment: .center)
                 VStack (alignment: .leading) {
-                    HStack {
-                        Text("")
-                            .padding(.top)
-                            .padding(.leading)
-                        Spacer()
-                    }
-                    Text("")
+                    Spacer()
+                    Text("이름")
+                        .font(.system(size: 20, weight: .heavy))
+                        
+                        .padding(.leading)
+                    
+                    Text("아이디")
+                        .padding(.top, 1)
                         .padding(.leading)
                     Spacer()
                     HStack() {

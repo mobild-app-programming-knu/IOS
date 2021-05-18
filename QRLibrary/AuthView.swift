@@ -9,15 +9,9 @@ import SwiftUI
 struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
-    @State var error: String = ""
     @State var loginresult = false
+    var username: String = ""
     
-//    func signIn(){
-//        if (email.count != 0 && password.count > 0) {
-//            loginresult = true
-//        }
-//    }
-//
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
             successCallback: { loginResponse in
@@ -29,12 +23,13 @@ struct SignInView: View {
         })
     }
     
+    
     var body: some View {
         VStack {
             Text("환영합니다")
                 .font(.system(size: 32, weight: .heavy))
             
-            Text("로그인")
+            Text("로그인 하세요")
                 .font(.system(size: 18, weight: .medium))
                 .foregroundColor(Color(UIColor.gray))
             
@@ -81,28 +76,51 @@ struct SignInView: View {
 struct SignUpView: View {
     @State var email: String = ""
     @State var password: String = ""
-    @State var error: String = ""
+    @State var name: String = ""
+    @State var phoneNum: String = ""
+    @State var joinresult = false
+    @State var response: String = ""
     
     func signUp(){
-        
+        doJoin(data: JoinRequest(name: name, phoneNum: phoneNum, email: email, password: password),
+            successCallback: { JoinResponse in
+                joinresult = true
+                response = "계정 생성 완료! 로그인 하세요"
+                print(JoinResponse)
+            }, failedCallback: { errorResponse in
+                joinresult = false
+                response = ""
+                print(errorResponse)
+        })
     }
     
     var body: some View {
         VStack {
             Text("계정 생성")
                 .font(.system(size: 32, weight: .heavy))
-            
+                
             VStack(spacing: 18) {
+                TextField("이름", text: $name)
+                    .font(.system(size: 14))
+                    .padding(12)
+                    .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
+                TextField("전화번호", text: $phoneNum)
+                    .font(.system(size: 14))
+                    .padding(12)
+                    .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
                 TextField("이메일", text: $email)
                     .font(.system(size: 14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
-                
                 SecureField("비밀번호", text: $password)
                     .font(.system(size: 14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
-            }.padding(.vertical, 64)
+                Text(response)
+                    .font(.system(size: 12))
+                    .foregroundColor(Color(UIColor.red))
+            }.padding(.vertical, 30)
+            .padding(.top, 34)
             
             Button(action: signUp) {
                 Text("계정 생성")
@@ -113,8 +131,6 @@ struct SignUpView: View {
                     .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(5)
             }
-        
-            //error
             
             Spacer()
         }.padding(.horizontal, 32)        
@@ -131,6 +147,6 @@ struct AuthView: View {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        SignInView()
     }
 }
