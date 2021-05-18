@@ -12,10 +12,21 @@ struct SignInView: View {
     @State var error: String = ""
     @State var loginresult = false
     
+//    func signIn(){
+//        if (email.count != 0 && password.count > 0) {
+//            loginresult = true
+//        }
+//    }
+//
     func signIn(){
-        if (email.count != 0 && password.count > 0) {
-            loginresult = true
-        }
+        doLogin(data: LoginRequest(email: email, password: password),
+            successCallback: { loginResponse in
+                loginresult = true
+                print(loginResponse)
+            }, failedCallback: { errorResponse in
+                loginresult = false
+                print(errorResponse)
+        })
     }
     
     var body: some View {
