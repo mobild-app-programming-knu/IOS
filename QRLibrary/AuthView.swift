@@ -11,6 +11,7 @@ struct SignInView: View {
     @State var password: String = ""
     @State var error: String = ""
     @State var loginresult = false
+    @State var user : User? = nil;
     
 //    func signIn(){
 //        if (email.count != 0 && password.count > 0) {
@@ -20,9 +21,10 @@ struct SignInView: View {
 //
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
-            successCallback: { loginResponse in
+            successCallback: { userResponse in
                 loginresult = true
-                print(loginResponse)
+                user = userResponse
+                print(userResponse)
             }, failedCallback: { errorResponse in
                 loginresult = false
                 print(errorResponse)
@@ -51,7 +53,7 @@ struct SignInView: View {
             }
             .padding(.vertical, 64)
             
-            NavigationLink(destination: TabbarView(), isActive: $loginresult) {
+            NavigationLink(destination: TabbarView(user: user), isActive: $loginresult) {
                 HStack {
                     Button(action: signIn) {
                         Text("로그인")
