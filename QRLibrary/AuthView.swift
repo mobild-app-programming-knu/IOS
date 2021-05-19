@@ -10,12 +10,15 @@ struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var loginresult = false
+    @State var user : User? = nil;
+
     
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
-            successCallback: { loginResponse in
+            successCallback: { userResonse in
                 loginresult = true
-                print(loginResponse)
+                user = userResonse
+                print(userResonse)
             }, failedCallback: { errorResponse in
                 loginresult = false
                 print(errorResponse)
@@ -44,7 +47,7 @@ struct SignInView: View {
             }
             .padding(.vertical, 64)
             
-            NavigationLink(destination: TabbarView(), isActive: $loginresult) {
+            NavigationLink(destination: TabbarView(user: user), isActive: $loginresult) {
                 HStack {
                     Button(action: signIn) {
                         Text("로그인")

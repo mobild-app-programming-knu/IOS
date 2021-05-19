@@ -12,8 +12,7 @@ import Alamofire
 let baseURL = "http://ec2-52-79-203-88.ap-northeast-2.compute.amazonaws.com:3000/api"
 let localURL = "http://localhost:9090/api"
 
-
-func doLogin(data:LoginRequest, successCallback: @escaping (LoginResponse) -> Void, failedCallback: @escaping (ErrorResponse) -> Void){
+func doLogin(data:LoginRequest, successCallback: @escaping (User) -> Void, failedCallback: @escaping (ErrorResponse) -> Void){
     doRestTask(requestURL: baseURL + "/user/login", method: .post, data: data, successCallback: successCallback, failedCallback: failedCallback)
 }
 
@@ -25,6 +24,7 @@ func doJoin(data:JoinRequest, successCallback: @escaping (JoinResponse) -> Void,
 func doBorrow(data:BorrowRequest, successCallback: @escaping (BorrowResponse)->Void, failedCallback: @escaping (ErrorResponse) -> Void){
     doRestTask(requestURL: baseURL + "/borrow/create", method: .post, data: data, successCallback: successCallback, failedCallback: failedCallback)
 }
+
 
 
 private func doRestTask<T : Codable, F : Codable>(requestURL:String, method:HTTPMethod, data:T?, successCallback: @escaping (F) -> Void, failedCallback: @escaping (ErrorResponse) -> Void) {

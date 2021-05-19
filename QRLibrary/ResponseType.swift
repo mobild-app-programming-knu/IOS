@@ -8,6 +8,15 @@
 import Foundation
 
 
+struct User : Codable{
+    var id : Int
+    var name : String
+    var phoneNum : String
+    var email : String
+    var password : String
+}
+
+
 struct LoginResponse : Codable{
     var id : Int
     
@@ -33,7 +42,11 @@ struct JoinResponse : Codable{
 }
 
 struct BorrowResponse : Codable{
-    
+    var borrow_id: Int
+    var state: String
+    var createdAt: String
+    var expiredAt: String
+    var booksIds: [Int]
 }
 
 struct ErrorResponse : Codable{
