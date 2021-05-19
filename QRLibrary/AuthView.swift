@@ -10,7 +10,6 @@ struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var loginresult = false
-    var username: String = ""
     
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
@@ -22,7 +21,6 @@ struct SignInView: View {
                 print(errorResponse)
         })
     }
-    
     
     var body: some View {
         VStack {

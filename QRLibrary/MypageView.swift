@@ -47,7 +47,6 @@ struct ListHeader: View {
                     Spacer()
                     Text("이름")
                         .font(.system(size: 20, weight: .heavy))
-                        
                         .padding(.leading)
                     
                     Text("아이디")
