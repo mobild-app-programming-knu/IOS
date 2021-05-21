@@ -28,7 +28,7 @@ struct CameraView: View {
           switch result {
           case .success(let data):
             if let userData = user {
-                doBorrow(data: BorrowRequest(borrowerId: userData.id, borrowerName: userData.name, bookIds: [Int(data) ?? 0])){ borrowResponse in
+                doBorrow(data: BorrowRequest(borrowerId: userData.id, borrowerName: userData.name, bookId: Int(data)!)){ borrowResponse in
                     print(borrowResponse)
                 } failedCallback: { errorResponse in
                     print(errorResponse)

@@ -28,8 +28,13 @@ func doBorrow(data:BorrowRequest, successCallback: @escaping (BorrowResponse)->V
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
 }
 
-func doGetBorrows(userId:Int, successCallback: @escaping ([BorrowResponse]) -> Void, failedCallback : @escaping (ErrorResponse) -> Void){
-    let request = makeURLRequest(requestURL: baseURL + "/borrow/search/" + String(userId), method: .get)
+func doGetBorrowings(userId:Int, successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/borrowing/" + String(userId), method: .get)
+    doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
+}
+
+func doGetAllBorrows(userId:Int, successCallback: @escaping ([BorrowResponse]) -> Void, failedCallback : @escaping (ErrorResponse) -> Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/all/" + String(userId), method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
 }
 

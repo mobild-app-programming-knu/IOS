@@ -22,6 +22,6 @@ struct JoinRequest : Codable{
 struct BorrowRequest : Codable{
     var borrowerId : Int
     var borrowerName : String
-    var bookIds : [Int]
+    var bookId : Int
 }
 

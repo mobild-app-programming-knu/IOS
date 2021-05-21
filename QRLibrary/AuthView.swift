@@ -34,7 +34,12 @@ struct SignInView: View {
         }, failedCallback: { errorResponse in
             print(errorResponse)
         })
-        doGetBorrows(userId: userId, successCallback: { borrows in
+        doGetAllBorrows(userId: userId, successCallback: { borrows in
+            print(borrows)
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+        doGetBorrowings(userId: userId, successCallback: { borrows in
             print(borrows)
         }, failedCallback: { errorResponse in
             print(errorResponse)
