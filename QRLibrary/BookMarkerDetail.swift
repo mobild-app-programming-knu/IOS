@@ -12,12 +12,29 @@ struct BookMarkerDetail: View {
     let bookMaker: BookMaker
     var body: some View {
 
-        VStack{
+        VStack(alignment: .leading){
             Image(bookMaker.imageUrl)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-            Text("본 책의 이름은 \(bookMaker.name)입니다.")
-            Text("해당 도서는 \(bookMaker.place)에 있습니다.")
+            HStack() {
+                Text("도서명")
+                    .padding(.leading, 120)
+                    .foregroundColor(Color(UIColor.gray))
+                Text("\(bookMaker.name)")
+            }
+            HStack() {
+                Text("위치   ")
+                    .padding(.leading, 120)
+                    .foregroundColor(Color(UIColor.gray))
+                Text("\(bookMaker.place)")
+            }
+            HStack() {
+                Text("상태   ")
+                    .padding(.leading, 120)
+                    .foregroundColor(Color(UIColor.gray))
+                //Text("\(bookMaker.state)")
+            }
+            
         }
 
     }

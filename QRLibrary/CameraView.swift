@@ -16,7 +16,7 @@ struct CameraView: View {
            Button(action: {
                self.isShowingScanner = true
            }) {
-               Text("Show Scanner")
+               Text("대여하기")
            }
            .sheet(isPresented: $isShowingScanner) {
                CodeScannerView(codeTypes: [.qr], simulatedData: "Some simulated data", completion: self.handleScan)

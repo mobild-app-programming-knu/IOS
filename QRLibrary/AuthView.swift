@@ -97,7 +97,7 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
-            Text("계정 생성")
+            Text("회원 가입")
                 .font(.system(size: 32, weight: .heavy))
                 
             VStack(spacing: 18) {
