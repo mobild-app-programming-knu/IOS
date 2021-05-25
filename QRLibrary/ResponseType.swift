@@ -45,7 +45,17 @@ struct BorrowResponse : Codable{
     var state: String
     var createdAt: String
     var expiredAt: String
-    var booksIds: [Int]
+    var booksId: Int
+}
+
+struct BookResponse : Codable{
+    var book_id : Int
+    var book_name : String
+    var author : String
+    var library : String
+    var publisher : String
+    var publication_date : String
+    var image_url : String
 }
 
 struct ErrorResponse : Codable{

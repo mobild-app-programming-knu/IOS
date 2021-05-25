@@ -19,11 +19,33 @@ struct SignInView: View {
                 loginresult = true
                 user = userResonse
                 print(userResonse)
+                
+                forTest(userId: userResonse.id)
+                
             }, failedCallback: { errorResponse in
                 loginresult = false
                 print(errorResponse)
         })
     }
+    
+    func forTest(userId:Int){
+        doGetAllBooks(successCallback: { books in
+            print(books)
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+        doGetAllBorrows(userId: userId, successCallback: { borrows in
+            print(borrows)
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+        doGetBorrowings(userId: userId, successCallback: { borrows in
+            print(borrows)
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+    }
+    
     
     var body: some View {
         VStack {
