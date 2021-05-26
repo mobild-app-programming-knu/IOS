@@ -43,7 +43,7 @@ struct BookMarkerDetail: View {
 }
 
 
-struct CarMarkerDetail_Previews: PreviewProvider {
+struct BookMarkerDetail_Previews: PreviewProvider {
     
     static let previewMaker = BookMaker(name: "hello world", imageUrl: "book1", place: "1층 열람실")
     static var previews: some View {

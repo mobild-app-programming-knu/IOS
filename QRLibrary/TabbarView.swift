@@ -8,22 +8,16 @@
 import SwiftUI
 
 struct TabbarView: View {
-    var user : User? = nil
     
     @State private var selection = 2
     
     var body: some View {
         TabView(selection: $selection) {
-            CameraView(user: user)
+            CameraView(user: ThisUser.user)
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
-                    Text("대여")
+                    Text("대출")
                 }
-//            Text("카메라")
-//                .tabItem {
-//                    Image(systemName: "barcode.viewfinder")
-//                    Text("대여")
-//                }.tag(1)
             Filter()
                 .tabItem {
                     Image(systemName: "magnifyingglass")

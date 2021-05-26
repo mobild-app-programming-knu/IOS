@@ -5,6 +5,7 @@
 //  Created by Minsang on 2021/05/04.
 //
 
+var booklist: BookResponse? = nil;
 
 struct BookMaker {
     let name: String
@@ -13,7 +14,6 @@ struct BookMaker {
 }
 
 extension BookMaker {
-   
     static func all() -> [BookMaker] {
         return [
             BookMaker(name: "1번째 책", imageUrl: "book1", place: "1층 열람실"),

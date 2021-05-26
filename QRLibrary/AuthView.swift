@@ -6,18 +6,21 @@
 
 import SwiftUI
 
+struct ThisUser {
+    static var user: User? = nil;
+    static var booklist: [BorrowResponse]? = nil;
+}
+
 struct SignInView: View {
     @State var email: String = ""
     @State var password: String = ""
     @State var loginresult = false
-    @State var user : User? = nil;
-
     
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
             successCallback: { userResonse in
                 loginresult = true
-                user = userResonse
+                ThisUser.user = userResonse
                 print(userResonse)
                 
                 forTest(userId: userResonse.id)
@@ -36,6 +39,8 @@ struct SignInView: View {
         })
         doGetAllBorrows(userId: userId, successCallback: { borrows in
             print(borrows)
+            ThisUser.booklist = borrows
+            
         }, failedCallback: { errorResponse in
             print(errorResponse)
         })
@@ -45,7 +50,6 @@ struct SignInView: View {
             print(errorResponse)
         })
     }
-    
     
     var body: some View {
         VStack {
@@ -69,7 +73,7 @@ struct SignInView: View {
             }
             .padding(.vertical, 64)
             
-            NavigationLink(destination: TabbarView(user: user), isActive: $loginresult) {
+            NavigationLink(destination: TabbarView(), isActive: $loginresult) {
                 HStack {
                     Button(action: signIn) {
                         Text("로그인")
