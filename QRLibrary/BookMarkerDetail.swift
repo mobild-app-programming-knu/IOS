@@ -13,9 +13,11 @@ struct BookMarkerDetail: View {
     var body: some View {
 
         VStack(alignment: .leading){
+            
             Image(bookMaker.imageUrl)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.top, 50)
             HStack() {
                 Text("도서명")
                     .padding(.leading, 120)
@@ -34,9 +36,8 @@ struct BookMarkerDetail: View {
                     .foregroundColor(Color(UIColor.gray))
                 //Text("\(bookMaker.state)")
             }
-            
+            Spacer()
         }
-
     }
 
 }
