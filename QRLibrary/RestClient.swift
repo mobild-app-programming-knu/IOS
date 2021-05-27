@@ -31,12 +31,12 @@ func doBorrow(data:BorrowRequest, successCallback: @escaping (BorrowResponse)->V
 func doGetBorrowings(userId:Int, successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
     let request = makeURLRequest(requestURL: baseURL + "/borrow/borrowing/" + String(userId), method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
-}
+}//현재대여중
 
 func doGetAllBorrows(userId:Int, successCallback: @escaping ([BorrowResponse]) -> Void, failedCallback : @escaping (ErrorResponse) -> Void){
     let request = makeURLRequest(requestURL: baseURL + "/borrow/all/" + String(userId), method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
-}
+}//모든대여
 
 func doGetAllBooks(successCallback: @escaping ([BookResponse]) -> Void, failedCallback : @escaping (ErrorResponse)->Void){
     let request = makeURLRequest(requestURL: baseURL + "/book/info", method: .get)

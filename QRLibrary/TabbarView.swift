@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TabbarView: View {
-    
-    @State private var selection = 2
+    var user : User? = nil
     
     var body: some View {
         TabView(selection: $selection) {
-            CameraView(user: ThisUser.user)
+            CameraView(user: user)
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
                     Text("대출")
@@ -23,7 +23,7 @@ struct TabbarView: View {
                     Image(systemName: "magnifyingglass")
                     Text("검색")
                 }.tag(2)
-            MypageView()
+            MypageView(user: user!)
                 .tabItem {
                     Image(systemName: "person.circle")
                     Text("마이페이지")
@@ -34,26 +34,20 @@ struct TabbarView: View {
 
 struct Filter : View {
     @State var text : String = ""
+    @State var bookMakers : [BookResponse] = []
     
     var body :some View{
         VStack{
             BookList(text: self.$text)
-            
         }
-    }
-}
-
-struct TabbarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabbarView()
     }
 }
 
 struct BookList: View {
     @Binding var text :String
     @State var editText : Bool = false
-    let bookMakers = BookMaker.all()
-
+    @ObservedObject var bookMakers = Observer()
+    
     var body: some View {
         VStack {
             TextField("검색어를 입력하세요" , text : self.$text)
@@ -72,20 +66,35 @@ struct BookList: View {
 }
 
 struct BookMakerCell: View {
+    @State var book : BookResponse
     
-    let bookMaker: BookMaker
-
     var body: some View {
         HStack {
-            Image(bookMaker.imageUrl)
+            KFImage(URL(string: book.image_url))
                     .resizable()
                     .frame(width: 100, height: 100)
-                    .cornerRadius(10)
+                    .cornerRadius(5)
 
             VStack(alignment: .leading) {
-                Text(bookMaker.name).font(.largeTitle)
-                Text("\(bookMaker.place)")
+                Text(book.book_name).font(.title)
+                Text("\(book.library)")
             }
         }
+    }
+}
+
+class Observer: ObservableObject {
+    @Published var bookMakers = [BookResponse]()
+    
+    func forTest(){
+        doGetAllBooks(successCallback: { books in
+            self.bookMakers = books
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+    }
+    
+    init(){
+        forTest()
     }
 }

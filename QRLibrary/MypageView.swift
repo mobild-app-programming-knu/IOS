@@ -6,6 +6,23 @@
 //
 
 import SwiftUI
+import Foundation
+import Combine
+
+class UserData : ObservableObject {
+    @Published var booklist: [BorrowResponse] = []
+    
+    init(userId: Int){
+        doGetAllBorrows(userId: userId, successCallback: { borrows in
+            print(borrows)
+            self.booklist = borrows
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+    }
+
+}
+
 
 struct mypageItem : Identifiable {
     var id = UUID()
@@ -14,14 +31,13 @@ struct mypageItem : Identifiable {
 }
 
 struct MypageView : View {
-        
-    @State private var mypagelist : [mypageItem] = [ mypageItem(text: "대출", image: "book"), mypageItem(text: "연체", image: "calendar.badge.exclamationmark"), mypageItem(text: "알림", image: "bell"), ]
+    var user : User? = nil
 
     var body: some View {
         List {
-            Section(header: ListHeader()) {
+            Section(header: ListHeader(user: user)) {
                 HStack {
-                    NavigationLink(destination: MyBookList(),
+                    NavigationLink(destination: MyBookList(userData: UserData(userId: user.id)),
                         label: {
                             Image(systemName: "book")
                             Text("대출")
@@ -52,14 +68,20 @@ struct MypageView : View {
 
 struct MyBookList : View {
     
+    @ObservedObject var userData: UserData
+    
     var body: some View {
         VStack(alignment: .leading) {
-            Text(ThisUser.booklist![0].state)
+            ForEach(userData.booklist, id: \.self) { book in
+                Text(book.book.book_name)
+            }
         }
     }
 }
 
 struct ListHeader: View {
+    var user : User? = nil
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack(alignment: .center) {
@@ -68,11 +90,11 @@ struct ListHeader: View {
                     .frame(width: 56, height: 56, alignment: .center)
                 VStack (alignment: .leading) {
                     Spacer()
-                    Text("\(ThisUser.user!.name)")
+                    Text("\(user!.name)")
                         .font(.system(size: 20, weight: .heavy))
                         .padding(.leading)
                     
-                    Text("\(ThisUser.user!.email)")
+                    Text("\(user!.email)")
                         .padding(.top, 1)
                         .padding(.leading)
                     Spacer()
@@ -84,11 +106,5 @@ struct ListHeader: View {
         }
         .padding(0)
         .frame(height: 100)
-    }
-}
-
-struct MypageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MypageView()
     }
 }

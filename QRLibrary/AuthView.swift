@@ -6,29 +6,35 @@
 
 import SwiftUI
 
-struct ThisUser {
-    static var user: User? = nil;
-    static var booklist: [BorrowResponse]? = nil;
+class ThisUser : ObservableObject {
+    //@Published var user = User(id: 0, name: "", phoneNum: "", email: "", password: "")
+    @Published var user : User? = nil
+    @Published var loginresult = false
+    
+    func signIn(email: String, password: String){
+        
+        doLogin(data: LoginRequest(email: email, password: password),
+            successCallback: { userResonse in
+                self.loginresult = true
+                self.user = userResonse
+                print(userResonse)
+                
+            }, failedCallback: { errorResponse in
+                self.loginresult = false
+                print(errorResponse)
+        })
+    }
 }
 
 struct SignInView: View {
+    @ObservedObject var thisUser : ThisUser = ThisUser()
+    
     @State var email: String = ""
     @State var password: String = ""
-    @State var loginresult = false
+    //@State var user : User = User(id: 0, name: "", phoneNum: "", email: "", password: "")
     
     func signIn(){
-        doLogin(data: LoginRequest(email: email, password: password),
-            successCallback: { userResonse in
-                loginresult = true
-                ThisUser.user = userResonse
-                print(userResonse)
-                
-                forTest(userId: userResonse.id)
-                
-            }, failedCallback: { errorResponse in
-                loginresult = false
-                print(errorResponse)
-        })
+        thisUser.signIn(email: email, password: password)
     }
     
     func forTest(userId:Int){
@@ -39,7 +45,7 @@ struct SignInView: View {
         })
         doGetAllBorrows(userId: userId, successCallback: { borrows in
             print(borrows)
-            ThisUser.booklist = borrows
+            
             
         }, failedCallback: { errorResponse in
             print(errorResponse)
@@ -73,7 +79,7 @@ struct SignInView: View {
             }
             .padding(.vertical, 64)
             
-            NavigationLink(destination: TabbarView(), isActive: $loginresult) {
+            NavigationLink(destination: TabbarView(user: thisUser.user!), isActive: $thisUser.loginresult) {
                 HStack {
                     Button(action: signIn) {
                         Text("로그인")
@@ -164,16 +170,16 @@ struct SignUpView: View {
     }
 }
 
-struct AuthView: View {
-    var body: some View {
-        NavigationView {
-            SignInView()
-        }
-    }
-}
+//struct AuthView: View {
+//    var body: some View {
+//        NavigationView {
+//            SignInView()
+//        }
+//    }
+//}
 
-struct AuthView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignInView()
-    }
-}
+//struct AuthView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SignInView()
+//    }
+//}

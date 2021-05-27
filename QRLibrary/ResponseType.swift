@@ -40,15 +40,16 @@ struct JoinResponse : Codable{
     var password : String
 }
 
-struct BorrowResponse : Codable{
+struct BorrowResponse : Codable & Hashable{
     var borrow_id: Int
     var state: String
     var createdAt: String
     var expiredAt: String
-    var booksId: Int
+    var book: BookResponse
+    
 }
 
-struct BookResponse : Codable{
+struct BookResponse : Codable & Hashable{
     var book_id : Int
     var book_name : String
     var author : String
