@@ -23,6 +23,7 @@
 		EB169E492650182B00852DCF /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E482650182B00852DCF /* Package.swift */; };
 		EB5EE703264A7B9600398319 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE702264A7B9600398319 /* RequestType.swift */; };
 		EB5EE705264ADEEA00398319 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE704264ADEEA00398319 /* ResponseType.swift */; };
+		EB72A9C6265FFD2700BBE37F /* MyObserableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */; };
 		EBC9A7252649806B00E89DCE /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC9A7242649806B00E89DCE /* RestClient.swift */; };
 		EBE73DF22647B11500E130FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EBE73DF12647B11500E130FF /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -48,6 +49,7 @@
 		EB169E482650182B00852DCF /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		EB5EE702264A7B9600398319 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		EB5EE704264ADEEA00398319 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
+		EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObserableObject.swift; sourceTree = "<group>"; };
 		EBC9A7242649806B00E89DCE /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
 		EBE73DF12647B11500E130FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +113,7 @@
 				EB5EE704264ADEEA00398319 /* ResponseType.swift */,
 				EB169E442650120200852DCF /* CameraView.swift */,
 				EB169E462650131100852DCF /* CodeScannerView.swift */,
+				EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */,
 			);
 			path = QRLibrary;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 			files = (
 				5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */,
 				5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */,
+				EB72A9C6265FFD2700BBE37F /* MyObserableObject.swift in Sources */,
 				5E00E0D526398ECE00210B81 /* AppDelegate.swift in Sources */,
 				EB169E452650120200852DCF /* CameraView.swift in Sources */,
 				EB5EE705264ADEEA00398319 /* ResponseType.swift in Sources */,
@@ -401,14 +405,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QRLibrary/Preview Content\"";
-				DEVELOPMENT_TEAM = SK7YVJMSSJ;
+				DEVELOPMENT_TEAM = 6JMJMR3NNF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QRLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "knu-comp420.QRLibrary-syn";
+				PRODUCT_BUNDLE_IDENTIFIER = "knu-comp420.QRLibrary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -423,14 +427,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"QRLibrary/Preview Content\"";
-				DEVELOPMENT_TEAM = SK7YVJMSSJ;
+				DEVELOPMENT_TEAM = 6JMJMR3NNF;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = QRLibrary/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "knu-comp420.QRLibrary-syn";
+				PRODUCT_BUNDLE_IDENTIFIER = "knu-comp420.QRLibrary";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

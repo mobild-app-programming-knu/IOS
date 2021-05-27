@@ -6,57 +6,35 @@
 
 import SwiftUI
 
-class ThisUser : ObservableObject {
-    //@Published var user = User(id: 0, name: "", phoneNum: "", email: "", password: "")
-    @Published var user : User? = nil
-    @Published var loginresult = false
-    
-    func signIn(email: String, password: String){
-        
-        doLogin(data: LoginRequest(email: email, password: password),
-            successCallback: { userResonse in
-                self.loginresult = true
-                self.user = userResonse
-                print(userResonse)
-                
-            }, failedCallback: { errorResponse in
-                self.loginresult = false
-                print(errorResponse)
-        })
-    }
-}
+
 
 struct SignInView: View {
-    @ObservedObject var thisUser : ThisUser = ThisUser()
+//    @ObservedObject var user : UserObserver = UserObserver()
+    
+    @EnvironmentObject var borrows : Borrows
     
     @State var email: String = ""
     @State var password: String = ""
     //@State var user : User = User(id: 0, name: "", phoneNum: "", email: "", password: "")
+    @State var canLogin = false
+    @State var user : User? = nil
+    
+    
+    
     
     func signIn(){
-        thisUser.signIn(email: email, password: password)
-    }
-    
-    func forTest(userId:Int){
-        doGetAllBooks(successCallback: { books in
-            print(books)
-        }, failedCallback: { errorResponse in
-            print(errorResponse)
-        })
-        doGetAllBorrows(userId: userId, successCallback: { borrows in
-            print(borrows)
-            
-            
-        }, failedCallback: { errorResponse in
-            print(errorResponse)
-        })
-        doGetBorrowings(userId: userId, successCallback: { borrows in
-            print(borrows)
-        }, failedCallback: { errorResponse in
-            print(errorResponse)
+        doLogin(data: LoginRequest(email: email, password: password),
+                successCallback: { userResponse in
+                    self.user = userResponse
+                    self.canLogin = true
+                    borrows.reloadData(userId: userResponse.id)
+                }, failedCallback: { error in
+
+                    self.canLogin = false
+                    print(error)
         })
     }
-    
+
     var body: some View {
         VStack {
             Text("환영합니다")
@@ -78,8 +56,7 @@ struct SignInView: View {
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
             }
             .padding(.vertical, 64)
-            
-            NavigationLink(destination: TabbarView(user: thisUser.user!), isActive: $thisUser.loginresult) {
+            NavigationLink(destination: TabbarView(user: user), isActive: $canLogin){
                 HStack {
                     Button(action: signIn) {
                         Text("로그인")
@@ -88,13 +65,11 @@ struct SignInView: View {
                             .foregroundColor(.white)
                             .font(.system(size: 14, weight: .bold))
                             .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
-                        .cornerRadius(5)
+                            .cornerRadius(5)
                     }
                 }
             }
-            
             Spacer()
-            
             NavigationLink(destination: SignUpView()) {
                 HStack {
                     Text("회원 가입")
@@ -170,16 +145,16 @@ struct SignUpView: View {
     }
 }
 
-//struct AuthView: View {
-//    var body: some View {
-//        NavigationView {
-//            SignInView()
-//        }
-//    }
-//}
+struct AuthView: View {
+    var body: some View {
+        NavigationView {
+            SignInView()
+        }
+    }
+}
 
-//struct AuthView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SignInView()
-//    }
-//}
+struct AuthView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthView()
+    }
+}

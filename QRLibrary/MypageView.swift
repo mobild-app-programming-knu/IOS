@@ -9,20 +9,6 @@ import SwiftUI
 import Foundation
 import Combine
 
-class UserData : ObservableObject {
-    @Published var booklist: [BorrowResponse] = []
-    
-    init(userId: Int){
-        doGetAllBorrows(userId: userId, successCallback: { borrows in
-            print(borrows)
-            self.booklist = borrows
-        }, failedCallback: { errorResponse in
-            print(errorResponse)
-        })
-    }
-
-}
-
 
 struct mypageItem : Identifiable {
     var id = UUID()
@@ -31,13 +17,13 @@ struct mypageItem : Identifiable {
 }
 
 struct MypageView : View {
-    var user : User? = nil
+    var user : User?
 
     var body: some View {
         List {
             Section(header: ListHeader(user: user)) {
                 HStack {
-                    NavigationLink(destination: MyBookList(userData: UserData(userId: user.id)),
+                    NavigationLink(destination: MyBookList(),
                         label: {
                             Image(systemName: "book")
                             Text("대출")
@@ -67,13 +53,12 @@ struct MypageView : View {
 }
 
 struct MyBookList : View {
-    
-    @ObservedObject var userData: UserData
+    @EnvironmentObject var borrows: Borrows
     
     var body: some View {
         VStack(alignment: .leading) {
-            ForEach(userData.booklist, id: \.self) { book in
-                Text(book.book.book_name)
+            List(borrows.borrows, id: \.self){ borrow in
+                Text(borrow.book.book_name)
             }
         }
     }

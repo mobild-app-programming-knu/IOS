@@ -10,7 +10,11 @@ import SwiftUI
 struct CameraView: View {
     var user : User? = nil
     
+    @EnvironmentObject var borrows : Borrows
+    
     @State private var isShowingScanner = false
+    
+    
 
        var body: some View {
            Button(action: {
@@ -30,6 +34,7 @@ struct CameraView: View {
             if let userData = user {
                 doBorrow(data: BorrowRequest(borrowerId: userData.id, borrowerName: userData.name, bookId: Int(data)!)){ borrowResponse in
                     print(borrowResponse)
+                    borrows.reloadData(userId: user!.id)
                 } failedCallback: { errorResponse in
                     print(errorResponse)
                 }

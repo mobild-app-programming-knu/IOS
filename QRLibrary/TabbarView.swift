@@ -9,11 +9,12 @@ import SwiftUI
 import Kingfisher
 
 struct TabbarView: View {
-    var user : User? = nil
+    var user : User?
+    @State private var selection = 2
     
     var body: some View {
         TabView(selection: $selection) {
-            CameraView(user: user)
+            CameraView(user: user!)
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
                     Text("대출")
@@ -55,9 +56,11 @@ struct BookList: View {
                 .padding(.horizontal, 15)
                 .background(Color(.systemGray6))
                 .cornerRadius(15)
-            List(self.bookMakers.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.name) { bookMaker in
-                NavigationLink(destination: BookMarkerDetail(bookMaker: bookMaker)) {
-                    BookMakerCell(bookMaker: bookMaker)
+            
+
+            List(self.bookMakers.books.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { book in
+                NavigationLink(destination: BookMarkerDetail(book: book)) {
+                    BookMakerCell(book: book)
                 }
             }
         }
@@ -66,7 +69,7 @@ struct BookList: View {
 }
 
 struct BookMakerCell: View {
-    @State var book : BookResponse
+    var book : BookResponse
     
     var body: some View {
         HStack {
@@ -84,11 +87,11 @@ struct BookMakerCell: View {
 }
 
 class Observer: ObservableObject {
-    @Published var bookMakers = [BookResponse]()
+    @Published var books = [BookResponse]()
     
     func forTest(){
         doGetAllBooks(successCallback: { books in
-            self.bookMakers = books
+            self.books = books
         }, failedCallback: { errorResponse in
             print(errorResponse)
         })

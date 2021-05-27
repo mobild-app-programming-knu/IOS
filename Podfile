@@ -7,4 +7,5 @@ target 'QRLibrary' do
 
   # Pods for QRLibrary
   pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 6.0'
 end
