@@ -9,7 +9,6 @@ import Foundation
 
 
 class UserObserver : ObservableObject {
-    //@Published var user = User(id: 0, name: "", phoneNum: "", email: "", password: "")
     @Published var user : User? = nil
     @Published var loginresult = false
     
