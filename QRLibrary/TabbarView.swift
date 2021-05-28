@@ -52,12 +52,12 @@ struct BookList: View {
     var body: some View {
         VStack {
             TextField("검색어를 입력하세요" , text : self.$text)
+                .autocapitalization(.none)
                 .padding(15)
                 .padding(.horizontal, 15)
                 .background(Color(.systemGray6))
                 .cornerRadius(15)
             
-
             List(self.bookMakers.books.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { book in
                 NavigationLink(destination: BookMarkerDetail(book: book)) {
                     BookMakerCell(book: book)

@@ -46,11 +46,13 @@ struct SignInView: View {
             
             VStack(spacing: 18) {
                 TextField("이메일", text: $email)
+                    .autocapitalization(.none)
                     .font(.system(size:14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
                 
                 SecureField("패스워드", text: $password)
+                    .autocapitalization(.none)
                     .font(.system(size:14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
@@ -109,6 +111,7 @@ struct SignUpView: View {
                 
             VStack(spacing: 18) {
                 TextField("이름", text: $name)
+                    .autocapitalization(.none)
                     .font(.system(size: 14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
@@ -117,10 +120,12 @@ struct SignUpView: View {
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
                 TextField("이메일", text: $email)
+                    .autocapitalization(.none)
                     .font(.system(size: 14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
                 SecureField("비밀번호", text: $password)
+                    .autocapitalization(.none)
                     .font(.system(size: 14))
                     .padding(12)
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
