@@ -22,19 +22,19 @@ struct BookMarkerDetail: View {
                 .padding(.top, 50)
             HStack() {
                 Text("도서명")
-                    .padding(.leading, 120)
+                    .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
                 Text("\(book.book_name)")
             }
             HStack() {
                 Text("위치   ")
-                    .padding(.leading, 120)
+                    .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
                 Text("\(book.library)")
             }
             HStack() {
                 Text("상태   ")
-                    .padding(.leading, 120)
+                    .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
             }
             Spacer()

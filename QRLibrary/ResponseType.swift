@@ -46,7 +46,6 @@ struct BorrowResponse : Codable & Hashable{
     var createdAt: String
     var expiredAt: String
     var book: BookResponse
-    
 }
 
 struct BookResponse : Codable & Hashable{

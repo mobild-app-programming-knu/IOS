@@ -18,7 +18,7 @@ struct TabbarView: View {
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
                     Text("대출")
-                }
+                }.tag(1)
             Filter()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -75,7 +75,7 @@ struct BookMakerCell: View {
         HStack {
             KFImage(URL(string: book.image_url))
                     .resizable()
-                    .frame(width: 100, height: 100)
+                    .frame(width: 70, height: 100)
                     .cornerRadius(5)
 
             VStack(alignment: .leading) {

@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    func getUser() {
-        
-    }
-    
     var body: some View {
         AuthView()
     }

@@ -6,8 +6,6 @@
 
 import SwiftUI
 
-
-
 struct SignInView: View {
 //    @ObservedObject var user : UserObserver = UserObserver()
     
@@ -18,9 +16,8 @@ struct SignInView: View {
     //@State var user : User = User(id: 0, name: "", phoneNum: "", email: "", password: "")
     @State var canLogin = false
     @State var user : User? = nil
-    
-    
-    
+    @State var selection = 1
+    @State var userstate = "admin"
     
     func signIn(){
         doLogin(data: LoginRequest(email: email, password: password),
@@ -34,8 +31,9 @@ struct SignInView: View {
                     print(error)
         })
     }
-
+    
     var body: some View {
+        
         VStack {
             Text("환영합니다")
                 .font(.system(size: 32, weight: .heavy))
@@ -58,20 +56,37 @@ struct SignInView: View {
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
             }
             .padding(.vertical, 64)
-            NavigationLink(destination: TabbarView(user: user), isActive: $canLogin){
-                HStack {
-                    Button(action: signIn) {
-                        Text("로그인")
-                            .frame(minWidth: 0, maxWidth: .infinity)
-                            .frame(height: 50)
-                            .foregroundColor(.white)
-                            .font(.system(size: 14, weight: .bold))
-                            .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
-                            .cornerRadius(5)
+            if userstate == "user" {
+                NavigationLink(destination: TabbarView(user: user), isActive: $canLogin){
+                    HStack {
+                        Button(action: signIn) {
+                            Text("로그인")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 50)
+                                .foregroundColor(.white)
+                                .font(.system(size: 14, weight: .bold))
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(5)
+                        }
+                    }
+                }
+            } else {
+                NavigationLink(destination: AdminTabbarView(user: user), isActive: $canLogin){
+                    HStack {
+                        Button(action: signIn) {
+                            Text("로그인")
+                                .frame(minWidth: 0, maxWidth: .infinity)
+                                .frame(height: 50)
+                                .foregroundColor(.white)
+                                .font(.system(size: 14, weight: .bold))
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(5)
+                        }
                     }
                 }
             }
             Spacer()
+            
             NavigationLink(destination: SignUpView()) {
                 HStack {
                     Text("회원 가입")

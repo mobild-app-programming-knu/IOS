@@ -17,6 +17,8 @@
 		5E00E0EB2639992500210B81 /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E00E0EA2639992500210B81 /* TabbarView.swift */; };
 		5E8DC695265EDA90003D41E0 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8DC694265EDA90003D41E0 /* MypageView.swift */; };
 		5EA7F28A264532010091ED9E /* BookMarkerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EA7F289264532010091ED9E /* BookMarkerDetail.swift */; };
+		5EB4DF3B26621118004E49DA /* AdminTabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB4DF3A26621118004E49DA /* AdminTabbarView.swift */; };
+		5EB4DF3D26623A0B004E49DA /* AdminCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EB4DF3C26623A0B004E49DA /* AdminCameraView.swift */; };
 		EB169E452650120200852DCF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E442650120200852DCF /* CameraView.swift */; };
 		EB169E472650131100852DCF /* CodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E462650131100852DCF /* CodeScannerView.swift */; };
 		EB169E492650182B00852DCF /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E482650182B00852DCF /* Package.swift */; };
@@ -39,6 +41,8 @@
 		5E00E0EA2639992500210B81 /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		5E8DC694265EDA90003D41E0 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		5EA7F289264532010091ED9E /* BookMarkerDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookMarkerDetail.swift; sourceTree = "<group>"; };
+		5EB4DF3A26621118004E49DA /* AdminTabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabbarView.swift; sourceTree = "<group>"; };
+		5EB4DF3C26623A0B004E49DA /* AdminCameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminCameraView.swift; sourceTree = "<group>"; };
 		7A271FA0D755625DF058272E /* Pods_QRLibrary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRLibrary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D2A3B374FB530B9A2CF3AAE /* Pods-QRLibrary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRLibrary.debug.xcconfig"; path = "Target Support Files/Pods-QRLibrary/Pods-QRLibrary.debug.xcconfig"; sourceTree = "<group>"; };
 		9E93B2F7DD00D0999C19B5C7 /* Pods-QRLibrary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRLibrary.release.xcconfig"; path = "Target Support Files/Pods-QRLibrary/Pods-QRLibrary.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,6 +105,7 @@
 				5E00E0E826398EF400210B81 /* AuthView.swift */,
 				5E00E0EA2639992500210B81 /* TabbarView.swift */,
 				5E8DC694265EDA90003D41E0 /* MypageView.swift */,
+				5EB4DF3A26621118004E49DA /* AdminTabbarView.swift */,
 				5EA7F289264532010091ED9E /* BookMarkerDetail.swift */,
 				5E00E0DF26398ED300210B81 /* LaunchScreen.storyboard */,
 				5E00E0E226398ED300210B81 /* Info.plist */,
@@ -109,6 +114,7 @@
 				EB5EE702264A7B9600398319 /* RequestType.swift */,
 				EB5EE704264ADEEA00398319 /* ResponseType.swift */,
 				EB169E442650120200852DCF /* CameraView.swift */,
+				5EB4DF3C26623A0B004E49DA /* AdminCameraView.swift */,
 				EB169E462650131100852DCF /* CodeScannerView.swift */,
 				EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */,
 			);
@@ -259,6 +265,8 @@
 				5E8DC695265EDA90003D41E0 /* MypageView.swift in Sources */,
 				EB169E492650182B00852DCF /* Package.swift in Sources */,
 				5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */,
+				5EB4DF3D26623A0B004E49DA /* AdminCameraView.swift in Sources */,
+				5EB4DF3B26621118004E49DA /* AdminTabbarView.swift in Sources */,
 				EB5EE703264A7B9600398319 /* RequestType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
