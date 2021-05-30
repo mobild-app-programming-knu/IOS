@@ -13,24 +13,57 @@ struct SignInView: View {
     
     @State var email: String = ""
     @State var password: String = ""
-    //@State var user : User = User(id: 0, name: "", phoneNum: "", email: "", password: "")
-    @State var canLogin = false
-    @State var user : User? = nil
-    @State var selection = 1
-    @State var userstate = "admin"
+
+    @State var canUserLogin = false
+    @State var canManagerLogin = false
     
-    func signIn(){
+    @State var loginFailed = false
+    @State var loginFailedString = ""
+    
+    @State var user : User? = nil
+    
+    @State var selection = 1
+    
+    func signInForUser(){
         doLogin(data: LoginRequest(email: email, password: password),
                 successCallback: { userResponse in
-                    self.user = userResponse
-                    self.canLogin = true
-                    borrows.reloadData(userId: userResponse.id)
+                    if(userResponse.user_type == "MANAGER"){
+                        loginFailed = true
+                        loginFailedString = "해당 계정은 student가 아닙니다."
+                    }else if(userResponse.user_type == "STUDENT"){
+                        self.user = userResponse
+                        self.canUserLogin = true
+                        borrows.reloadData(userId: userResponse.id)
+                    }
                 }, failedCallback: { error in
-
-                    self.canLogin = false
                     print(error)
+                    loginFailed = true
+                    loginFailedString = error.errors.map({ (customError : ErrorResponse.CustomFieldError) in
+                        return customError.reason
+                    }).description
         })
     }
+    
+    func signInForManager(){
+        doLogin(data: LoginRequest(email: email, password: password),
+                successCallback: { userResponse in
+                    if(userResponse.user_type == "MANAGER"){
+                        self.user = userResponse
+                        self.canManagerLogin = true
+                        borrows.reloadDataForManager()
+                    }else if(userResponse.user_type == "STUDENT"){
+                        loginFailed = true
+                        loginFailedString = "해당 계정은 manager가 아닙니다."
+                    }
+                }, failedCallback: { error in
+                    print(error)
+                    loginFailed = true
+                    loginFailedString = error.errors.map({ (customError : ErrorResponse.CustomFieldError) in
+                        return customError.reason
+                    }).description
+        })
+    }
+    
     
     var body: some View {
         
@@ -56,11 +89,11 @@ struct SignInView: View {
                     .background(RoundedRectangle(cornerRadius: 5).strokeBorder(Color(UIColor.black), lineWidth: 1))
             }
             .padding(.vertical, 64)
-            if userstate == "user" {
-                NavigationLink(destination: TabbarView(user: user), isActive: $canLogin){
+            HStack{
+                NavigationLink(destination: TabbarView(user: user), isActive: $canUserLogin){
                     HStack {
-                        Button(action: signIn) {
-                            Text("로그인")
+                        Button(action: signInForUser) {
+                            Text("회원으로 로그인")
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .frame(height: 50)
                                 .foregroundColor(.white)
@@ -70,11 +103,10 @@ struct SignInView: View {
                         }
                     }
                 }
-            } else {
-                NavigationLink(destination: AdminTabbarView(user: user), isActive: $canLogin){
+                NavigationLink(destination: AdminTabbarView(user: user), isActive: $canManagerLogin){
                     HStack {
-                        Button(action: signIn) {
-                            Text("로그인")
+                        Button(action: signInForManager) {
+                            Text("사서로 로그인")
                                 .frame(minWidth: 0, maxWidth: .infinity)
                                 .frame(height: 50)
                                 .foregroundColor(.white)
@@ -84,7 +116,10 @@ struct SignInView: View {
                         }
                     }
                 }
+            }.alert(isPresented: self.$loginFailed){
+                return Alert(title: Text("로그인 실패"), message: Text(loginFailedString), dismissButton: .default(Text("OK")))
             }
+
             Spacer()
             
             NavigationLink(destination: SignUpView()) {

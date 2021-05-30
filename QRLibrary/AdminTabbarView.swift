@@ -41,8 +41,11 @@ struct adminFilter : View {
 struct BorrowList: View {
     @Binding var text :String
     @State var editText : Bool = false
-    @ObservedObject var borrowMakers = Observer_Admin()
+//    @ObservedObject var borrowMakers = Observer_Admin()
+    @EnvironmentObject var borrows : Borrows
+    
     @State private var width: CGFloat? = nil
+    
     
     var body: some View {
         VStack {
@@ -68,15 +71,16 @@ struct BorrowList: View {
             .background(Color(red: 147 / 255, green: 149 / 255, blue: 151 / 255).opacity(0.3))
             .cornerRadius(10)
             
-            List(self.borrowMakers.books.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { borrow in
-                NavigationLink(destination: BookMarkerDetail(borrow: borrow)) {
+            List(self.borrows.allBorrowings.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { borrow in
+                NavigationLink(destination: BorrowDetail(borrow: borrow)) {
                     BorrowMakerCell(borrow: borrow)
                 }
             }
         }
-        
     }
 }
+
+
 
 struct BorrowMakerCell: View {
     var borrow : BorrowResponse
@@ -84,27 +88,32 @@ struct BorrowMakerCell: View {
     var body: some View {
         HStack {
             HStack() {
+                Spacer()
                 Text("\(borrow.borrow_id)")
+                Spacer()
+                Spacer()
                 Text(borrow.createdAt)
+                Spacer()
                 Text(borrow.expiredAt)
+                Spacer()
             }
         }
     }
 }
 
-class Observer_Admin: ObservableObject {
-    @Published var borrows = [BorrowResponse]()
-    var user : User?
-    
-    func forTest(){
-        doGetAllBorrows(userId: user!.id, successCallback: { borrows in
-            self.borrows = borrows
-        }, failedCallback: { errorResponse in
-            print(errorResponse)
-        })
-    }
-    
-    init(){
-        forTest()
-    }
-}
+//class Observer_Admin: ObservableObject {
+//    @Published var borrows = [BorrowResponse]()
+//    var user : User?
+//
+//    func forTest(){
+//        doGetAllBorrows(userId: user!.id, successCallback: { borrows in
+//            self.borrows = borrows
+//        }, failedCallback: { errorResponse in
+//            print(errorResponse)
+//        })
+//    }
+//
+//    init(){
+//        forTest()
+//    }
+//}

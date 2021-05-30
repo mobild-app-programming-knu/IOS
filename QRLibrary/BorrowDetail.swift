@@ -1,41 +1,42 @@
 //
-//  BookMarkerDetail.swift
-//  BookList
+//  BorrowDetail.swift
+//  QRLibrary
 //
-//  Created by Minsang on 2021/05/04.
+//  Created by 한현민 on 2021/05/30.
 //
 
 import SwiftUI
 import Kingfisher
 
-struct BookMarkerDetail: View {
+struct BorrowDetail: View {
 
-    let book: BookResponse
+    let borrow: BorrowResponse
     
     var body: some View {
 
         VStack(alignment: .leading){
             
-            KFImage(URL(string: book.image_url))
+            KFImage(URL(string: borrow.book.image_url))
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .padding(.top, 50)
             HStack() {
-                Text("도서명")
+                Text("도서명  ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
-                Text("\(book.book_name)")
+                Text("\(borrow.book.book_name)")
+            }
+            HStack(){
+                Text("상   태  ")
+                    .padding(.leading, 100)
+                    .foregroundColor(Color(UIColor.gray))
+                Text(borrow.state)
             }
             HStack() {
-                Text("위치   ")
+                Text("빌린자  ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
-                Text("\(book.library)")
-            }
-            HStack() {
-                Text("상태   ")
-                    .padding(.leading, 100)
-                    .foregroundColor(Color(UIColor.gray))
+                Text("\(borrow.user_name)")
             }
             Spacer()
         }

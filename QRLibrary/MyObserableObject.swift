@@ -29,11 +29,44 @@ class UserObserver : ObservableObject {
 
 class Borrows : ObservableObject {
     @Published var borrows: [BorrowResponse] = []
+    @Published var expireds : [BorrowResponse] = []
+    
+    @Published var allBorrowings : [BorrowResponse] = []
+    @Published var allExpired : [BorrowResponse] = []
 
-    func reloadData(userId : Int){
-        doGetAllBorrows(userId: userId, successCallback: { borrows in
+    func reloadData(userId : Int){        
+        doGetBorrowings(userId: userId, successCallback: { borrows in
+            print("현재 대여중인 목록들...")
             print(borrows)
+            print()
             self.borrows = borrows
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+        doGetExpired(userId: userId, successCallback: { borrows in
+            print("현재 연체된 목록들...")
+            print(borrows)
+            print()
+            self.expireds = borrows
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+    }
+    
+    func reloadDataForManager(){
+        doGetAllBorrowings(successCallback: { borrows in
+            print("현재 대여중인 목록들...")
+            print(borrows)
+            print()
+            self.allBorrowings = borrows
+        }, failedCallback: { errorResponse in
+            print(errorResponse)
+        })
+        doGetAllExpired(successCallback: { borrows in
+            print("현재 연체된 목록들...")
+            print(borrows)
+            print()
+            self.allExpired = borrows
         }, failedCallback: { errorResponse in
             print(errorResponse)
         })

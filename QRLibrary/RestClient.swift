@@ -12,17 +12,19 @@ import Alamofire
 let baseURL = "http://ec2-52-79-203-88.ap-northeast-2.compute.amazonaws.com:3000/api"
 let localURL = "http://localhost:9090/api"
 
+// user login join
 func doLogin(data:LoginRequest, successCallback: @escaping (User) -> Void, failedCallback: @escaping (ErrorResponse) -> Void){
     let request = makeURLRequest(requestURL: baseURL + "/user/login", method: .post, data: data)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
 }
-
 
 func doJoin(data:JoinRequest, successCallback: @escaping (JoinResponse) -> Void, failedCallback: @escaping (ErrorResponse) -> Void){
     let request = makeURLRequest(requestURL: baseURL + "/user/join", method: .post, data: data)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
 }
 
+
+// borrow
 func doBorrow(data:BorrowRequest, successCallback: @escaping (BorrowResponse)->Void, failedCallback: @escaping (ErrorResponse) -> Void){
     let request = makeURLRequest(requestURL: baseURL + "/borrow/create", method: .post, data: data)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
@@ -31,13 +33,37 @@ func doBorrow(data:BorrowRequest, successCallback: @escaping (BorrowResponse)->V
 func doGetBorrowings(userId:Int, successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
     let request = makeURLRequest(requestURL: baseURL + "/borrow/borrowing/" + String(userId), method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
-}//현재대여중
+}//현재 대여중
+
+func doGetExpired(userId:Int, successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/expired/" + String(userId), method: .get)
+    doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
+}//현재 연체된것들
 
 func doGetAllBorrows(userId:Int, successCallback: @escaping ([BorrowResponse]) -> Void, failedCallback : @escaping (ErrorResponse) -> Void){
     let request = makeURLRequest(requestURL: baseURL + "/borrow/all/" + String(userId), method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
-}//모든대여
+}//모든 대여 기록
 
+// borrow api for 사서
+func doGetAllBorrowings(successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/borrowing", method: .get)
+    doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
+}//현재 대여중
+
+func doGetAllExpired(successCallback:@escaping ([BorrowResponse]) -> Void, failedCallback: @escaping (ErrorResponse)->Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/expired", method: .get)
+    doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
+}//현재 연체된것들
+
+// 반납
+func doReturn(book_id : Int, successCallback: @escaping (ReturnResponse)->Void, failedCallback: @escaping (ErrorResponse) -> Void){
+    let request = makeURLRequest(requestURL: baseURL + "/borrow/\(book_id)/return", method: .post)
+    doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)
+}
+
+
+// books
 func doGetAllBooks(successCallback: @escaping ([BookResponse]) -> Void, failedCallback : @escaping (ErrorResponse)->Void){
     let request = makeURLRequest(requestURL: baseURL + "/book/info", method: .get)
     doRestTask(request: request, successCallback: successCallback, failedCallback: failedCallback)

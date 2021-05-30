@@ -14,8 +14,9 @@ struct AdminCameraView: View {
     
     @State private var isShowingScanner = false
     
+    @State private var isTaken = false
+    @State private var takenString = ""
     
-
        var body: some View {
            Button(action: {
                self.isShowingScanner = true
@@ -24,6 +25,8 @@ struct AdminCameraView: View {
            }
            .sheet(isPresented: $isShowingScanner) {
                CodeScannerView(codeTypes: [.qr], simulatedData: "Some simulated data", completion: self.handleScan)
+           }.alert(isPresented: $isTaken){
+                return Alert(title: Text("결과"), message: Text(takenString), dismissButton: .default(Text("OK")))
            }
        }
 
@@ -31,15 +34,18 @@ struct AdminCameraView: View {
           self.isShowingScanner = false
           switch result {
           case .success(let data):
-            if let userData = user {
-                doBorrow(data: BorrowRequest(borrowerId: userData.id, borrowerName: userData.name, bookId: Int(data)!)){ borrowResponse in
-                    print(borrowResponse)
-                    borrows.reloadData(userId: user!.id)
-                } failedCallback: { errorResponse in
-                    print(errorResponse)
-                }
-            }
-
+            doReturn(book_id: Int(data)!, successCallback: { returnResult in
+                isTaken = true
+                takenString = returnResult.result
+                
+                borrows.reloadDataForManager()
+            }, failedCallback:{ errorResponse in
+                isTaken = true
+                takenString = errorResponse.errors.map({ (customError : ErrorResponse.CustomFieldError) in
+                    return customError.reason
+                }).description
+            })
+        
               print("Success with \(data)")
           case .failure(let error):
               print("Scanning failed \(error)")

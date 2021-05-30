@@ -14,6 +14,7 @@ struct User : Codable{
     var phoneNum : String
     var email : String
     var password : String
+    var user_type : String
 }
 
 struct LoginResponse : Codable{
@@ -45,6 +46,8 @@ struct BorrowResponse : Codable & Hashable{
     var state: String
     var createdAt: String
     var expiredAt: String
+    var user_id : Int
+    var user_name : String
     var book: BookResponse
 }
 
@@ -56,6 +59,10 @@ struct BookResponse : Codable & Hashable{
     var publisher : String
     var publication_date : String
     var image_url : String
+}
+
+struct ReturnResponse : Codable & Hashable {
+    var result : String
 }
 
 struct ErrorResponse : Codable{

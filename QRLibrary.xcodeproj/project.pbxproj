@@ -22,6 +22,7 @@
 		EB169E452650120200852DCF /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E442650120200852DCF /* CameraView.swift */; };
 		EB169E472650131100852DCF /* CodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E462650131100852DCF /* CodeScannerView.swift */; };
 		EB169E492650182B00852DCF /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB169E482650182B00852DCF /* Package.swift */; };
+		EB3FEE812663DE29009D9811 /* BorrowDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB3FEE802663DE29009D9811 /* BorrowDetail.swift */; };
 		EB5EE703264A7B9600398319 /* RequestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE702264A7B9600398319 /* RequestType.swift */; };
 		EB5EE705264ADEEA00398319 /* ResponseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5EE704264ADEEA00398319 /* ResponseType.swift */; };
 		EB72A9C6265FFD2700BBE37F /* MyObserableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */; };
@@ -49,6 +50,7 @@
 		EB169E442650120200852DCF /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		EB169E462650131100852DCF /* CodeScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeScannerView.swift; sourceTree = "<group>"; };
 		EB169E482650182B00852DCF /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		EB3FEE802663DE29009D9811 /* BorrowDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrowDetail.swift; sourceTree = "<group>"; };
 		EB5EE702264A7B9600398319 /* RequestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestType.swift; sourceTree = "<group>"; };
 		EB5EE704264ADEEA00398319 /* ResponseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseType.swift; sourceTree = "<group>"; };
 		EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObserableObject.swift; sourceTree = "<group>"; };
@@ -109,14 +111,15 @@
 				5EA7F289264532010091ED9E /* BookMarkerDetail.swift */,
 				5E00E0DF26398ED300210B81 /* LaunchScreen.storyboard */,
 				5E00E0E226398ED300210B81 /* Info.plist */,
-				5E00E0DC26398ED300210B81 /* Preview Content */,
 				EBC9A7242649806B00E89DCE /* RestClient.swift */,
 				EB5EE702264A7B9600398319 /* RequestType.swift */,
 				EB5EE704264ADEEA00398319 /* ResponseType.swift */,
 				EB169E442650120200852DCF /* CameraView.swift */,
 				5EB4DF3C26623A0B004E49DA /* AdminCameraView.swift */,
 				EB169E462650131100852DCF /* CodeScannerView.swift */,
+				5E00E0DC26398ED300210B81 /* Preview Content */,
 				EB72A9C5265FFD2700BBE37F /* MyObserableObject.swift */,
+				EB3FEE802663DE29009D9811 /* BorrowDetail.swift */,
 			);
 			path = QRLibrary;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				EBC9A7252649806B00E89DCE /* RestClient.swift in Sources */,
 				EB169E472650131100852DCF /* CodeScannerView.swift in Sources */,
 				5E00E0E926398EF400210B81 /* AuthView.swift in Sources */,
+				EB3FEE812663DE29009D9811 /* BorrowDetail.swift in Sources */,
 				5E8DC695265EDA90003D41E0 /* MypageView.swift in Sources */,
 				EB169E492650182B00852DCF /* Package.swift in Sources */,
 				5E00E0D926398ECE00210B81 /* ContentView.swift in Sources */,

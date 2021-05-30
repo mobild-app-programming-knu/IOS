@@ -14,6 +14,8 @@ struct CameraView: View {
     
     @State private var isShowingScanner = false
     
+    @State private var isTaken = false
+    @State private var takenString = ""
     
 
        var body: some View {
@@ -24,6 +26,8 @@ struct CameraView: View {
            }
            .sheet(isPresented: $isShowingScanner) {
                CodeScannerView(codeTypes: [.qr], simulatedData: "Some simulated data", completion: self.handleScan)
+           }.alert(isPresented: $isTaken){
+                return Alert(title: Text("결과"), message: Text(takenString), dismissButton: .default(Text("OK")))
            }
        }
 
@@ -33,10 +37,15 @@ struct CameraView: View {
           case .success(let data):
             if let userData = user {
                 doBorrow(data: BorrowRequest(borrowerId: userData.id, borrowerName: userData.name, bookId: Int(data)!)){ borrowResponse in
-                    print(borrowResponse)
+                    isTaken = true
+                    takenString = "대여가 완료되었습니다."
+                    
                     borrows.reloadData(userId: user!.id)
                 } failedCallback: { errorResponse in
-                    print(errorResponse)
+                    isTaken = true
+                    takenString = errorResponse.errors.map({ (customError : ErrorResponse.CustomFieldError) in
+                        return customError.reason
+                    }).description
                 }
             }
 
