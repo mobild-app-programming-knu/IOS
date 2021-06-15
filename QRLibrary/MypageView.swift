@@ -22,7 +22,7 @@ struct MypageView : View {
     var body: some View {
         List {
             Section(header: ListHeader(user: user)
-                        .background(Color(red: 245 / 255, green: 223 / 255, blue: 77 / 256))
+                        .background(Color(red: 242 / 255, green: 154 / 255, blue: 128 / 256))
                         .listRowInsets(EdgeInsets(
                                             top: 0,
                                             leading: 0,
@@ -35,7 +35,7 @@ struct MypageView : View {
                             Image(systemName: "book")
                             Text("대출")
                         }
-                    )
+                    ).accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
                 HStack {
                     NavigationLink(destination: Text("연체"),
@@ -43,7 +43,7 @@ struct MypageView : View {
                             Image(systemName: "calendar.badge.exclamationmark")
                             Text("연체")
                         }
-                    )
+                    ).accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
                 HStack {
                     NavigationLink(destination: Text("알림"),
@@ -91,17 +91,15 @@ struct MyBookList : View {
     
     var body: some View {
         HStack {
-            Spacer()
             Text("도서명")
-                .frame(width: width, alignment: .leading)
-                .lineLimit(1)
-                .background(CenteringView())
+                .padding(.leading, 70)
             Spacer()
             Text("반납일")
-            Spacer()
+                .padding(.trailing, 70)
+            
         }
         .frame(height: 40)
-        .background(Color(red: 147 / 255, green: 149 / 255, blue: 151 / 255).opacity(0.3))
+        .background(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256).opacity(0.5))
         .cornerRadius(10)
 
         List(borrows.borrows, id: \.self){ borrow in
@@ -155,5 +153,10 @@ struct ListHeader: View {
         .padding(0)
         .frame(height: 100)
         .cornerRadius(10)
+    }
+}
+struct MypageView_Previews: PreviewProvider {
+    static var previews: some View {
+        MypageView()
     }
 }

@@ -98,10 +98,10 @@ struct SignInView: View {
                                 .frame(height: 50)
                                 .foregroundColor(.white)
                                 .font(.system(size: 14, weight: .bold))
-                                .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256), Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256)]), startPoint: .leading, endPoint: .trailing))
                                 .cornerRadius(5)
                         }
-                    }
+                    }.accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
                 NavigationLink(destination: AdminTabbarView(user: user), isActive: $canManagerLogin){
                     HStack {
@@ -111,11 +111,11 @@ struct SignInView: View {
                                 .frame(height: 50)
                                 .foregroundColor(.white)
                                 .font(.system(size: 14, weight: .bold))
-                                .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
+                                .background(LinearGradient(gradient: Gradient(colors: [Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256), Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256)]), startPoint: .leading, endPoint: .trailing))
                                 .cornerRadius(5)
                         }
                     }
-                }
+                }.accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
             }.alert(isPresented: self.$loginFailed){
                 return Alert(title: Text("로그인 실패"), message: Text(loginFailedString), dismissButton: .default(Text("OK")))
             }
@@ -126,6 +126,7 @@ struct SignInView: View {
                 HStack {
                     Text("회원 가입")
                         .font(.system(size: 14, weight: .semibold))
+                        .foregroundColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
             }
         }
@@ -191,7 +192,7 @@ struct SignUpView: View {
                     .frame(height: 50)
                     .foregroundColor(.white)
                     .font(.system(size: 14, weight: .bold))
-                    .background(LinearGradient(gradient: Gradient(colors: [Color(UIColor.systemBlue), Color(UIColor.systemBlue)]), startPoint: .leading, endPoint: .trailing))
+                    .background(LinearGradient(gradient: Gradient(colors: [Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256), Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256)]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(5)
             }
             

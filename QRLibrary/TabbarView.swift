@@ -29,7 +29,7 @@ struct TabbarView: View {
                     Image(systemName: "person.circle")
                     Text("마이페이지")
                 }.tag(3)
-        }
+        }.accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
     }
 }
 
@@ -61,7 +61,7 @@ struct BookList: View {
             List(self.bookMakers.books.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { book in
                 NavigationLink(destination: BookMarkerDetail(book: book)) {
                     BookMakerCell(book: book)
-                }
+                }.accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
             }
         }
         
@@ -79,7 +79,7 @@ struct BookMakerCell: View {
                     .cornerRadius(5)
 
             VStack(alignment: .leading) {
-                Text(book.book_name).font(.title)
+                Text(book.book_name).font(.system(size: 25, weight: .semibold))
                 Text("\(book.library)")
             }
         }

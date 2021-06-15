@@ -41,11 +41,9 @@ struct adminFilter : View {
 struct BorrowList: View {
     @Binding var text :String
     @State var editText : Bool = false
-//    @ObservedObject var borrowMakers = Observer_Admin()
     @EnvironmentObject var borrows : Borrows
     
     @State private var width: CGFloat? = nil
-    
     
     var body: some View {
         VStack {
