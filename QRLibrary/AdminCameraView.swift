@@ -21,7 +21,10 @@ struct AdminCameraView: View {
            Button(action: {
                self.isShowingScanner = true
            }) {
-               Text("반납하기")
+            VStack(){
+                Image(systemName: "qrcode.viewfinder").font(.system(size: 100)).padding(.bottom)
+                Text("반납하기").font(.system(size: 20, weight: .semibold))
+            }
            }
            .sheet(isPresented: $isShowingScanner) {
                CodeScannerView(codeTypes: [.qr], simulatedData: "Some simulated data", completion: self.handleScan)

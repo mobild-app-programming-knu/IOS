@@ -66,7 +66,7 @@ struct BorrowList: View {
                 Spacer()
             }
             .frame(height: 40)
-            .background(Color(red: 147 / 255, green: 149 / 255, blue: 151 / 255).opacity(0.3))
+            .background(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256).opacity(0.5))
             .cornerRadius(10)
             
             List(self.borrows.allBorrowings.filter({"\($0)".contains(self.text) || self.text.isEmpty}), id: \.self) { borrow in
