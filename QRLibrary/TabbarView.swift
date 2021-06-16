@@ -11,14 +11,17 @@ import Kingfisher
 struct TabbarView: View {
     var user : User?
     @State private var selection = 2
+    @State var isTaken = false
+    @State var takenString = ""
     
     var body: some View {
         TabView(selection: $selection) {
-            CameraView(user: user!)
+            CameraView(user: user!, isTaken: $isTaken, takenString:$takenString)
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
                     Text("대출")
                 }.tag(1)
+
             Filter()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
@@ -30,6 +33,7 @@ struct TabbarView: View {
                     Text("마이페이지")
                 }.tag(3)
         }.accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
+        
     }
 }
 

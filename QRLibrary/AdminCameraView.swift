@@ -14,12 +14,14 @@ struct AdminCameraView: View {
     
     @State private var isShowingScanner = false
     
-    @State private var isTaken = false
-    @State private var takenString = ""
+    @Binding var isTaken : Bool
+    @Binding var takenString : String
     
        var body: some View {
+        HStack{
            Button(action: {
                self.isShowingScanner = true
+            self.isTaken = false
            }) {
             VStack(){
                 Image(systemName: "qrcode.viewfinder").font(.system(size: 100)).padding(.bottom)
@@ -28,36 +30,44 @@ struct AdminCameraView: View {
            }
            .sheet(isPresented: $isShowingScanner) {
                CodeScannerView(codeTypes: [.qr], simulatedData: "Some simulated data", completion: self.handleScan)
-           }.alert(isPresented: $isTaken){
-                return Alert(title: Text("결과"), message: Text(takenString), dismissButton: .default(Text("OK")))
            }
+        }.alert(isPresented: self.$isTaken){
+            return Alert(title: Text("결과"), message: Text(takenString), dismissButton: .default(Text("OK")))
+        }
        }
 
        private func handleScan(result: Result<String, CodeScannerView.ScanError>) {
           self.isShowingScanner = false
+        
           switch result {
           case .success(let data):
             doReturn(book_id: Int(data)!, successCallback: { returnResult in
-                isTaken = true
-                takenString = returnResult.result
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.takenString = "반납이 완료되었습니다."
+                    self.isTaken = true
+                    
+                    print(takenString)
+                }
                 
                 borrows.reloadDataForManager()
             }, failedCallback:{ errorResponse in
-                isTaken = true
-                takenString = errorResponse.errors.map({ (customError : ErrorResponse.CustomFieldError) in
-                    return customError.reason
-                }).description
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    self.takenString = errorResponse.errors.map({ (customError : ErrorResponse.CustomFieldError) in
+                        return customError.reason
+                    }).description
+                    self.isTaken = true
+                    
+                    print(takenString)
+                }
             })
-        
-              print("Success with \(data)")
           case .failure(let error):
               print("Scanning failed \(error)")
           }
        }
 }
 
-struct AdminCameraView_Previews: PreviewProvider {
-    static var previews: some View {
-        AdminCameraView()
-    }
-}
+//struct AdminCameraView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AdminCameraView()
+//    }
+//}

@@ -38,12 +38,20 @@ struct BookMarkerDetail: View {
                     .foregroundColor(Color(UIColor.gray))
                 Text("\(book.library)")
             }
+<<<<<<< HEAD
             HStack() {
                 Text("상태   ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
                 
             }
+=======
+//            HStack() {
+//                Text("상태   ")
+//                    .padding(.leading, 100)
+//                    .foregroundColor(Color(UIColor.gray))
+//            }
+>>>>>>> a6828f75e2ed5d5517e064fde3e8e2aa603edb9a
             Spacer()
         }
     }
