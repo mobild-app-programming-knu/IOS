@@ -33,7 +33,7 @@ struct BorrowDetail: View {
                 Text(borrow.state)
             }
             HStack() {
-                Text("빌린자  ")
+                Text("대출자  ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
                 Text("\(borrow.user_name)")

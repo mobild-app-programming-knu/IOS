@@ -27,6 +27,12 @@ struct BookMarkerDetail: View {
                 Text("\(book.book_name)")
             }
             HStack() {
+                Text("저자")
+                    .padding(.leading, 100)
+                    .foregroundColor(Color(UIColor.gray))
+                Text("\(book.author)")
+            }
+            HStack() {
                 Text("위치   ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
@@ -36,6 +42,7 @@ struct BookMarkerDetail: View {
                 Text("상태   ")
                     .padding(.leading, 100)
                     .foregroundColor(Color(UIColor.gray))
+                
             }
             Spacer()
         }
