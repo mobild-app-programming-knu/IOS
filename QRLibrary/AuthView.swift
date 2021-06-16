@@ -42,7 +42,7 @@ struct SignInView: View {
                         return customError.reason
                     }).description
         })
-    }
+}
     
     func signInForManager(){
         doLogin(data: LoginRequest(email: email, password: password),

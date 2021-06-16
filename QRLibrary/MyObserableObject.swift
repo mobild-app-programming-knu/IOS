@@ -28,6 +28,9 @@ class UserObserver : ObservableObject {
 }
 
 class Borrows : ObservableObject {
+    @Published var isTaken = false
+    @Published var takenString = ""
+    
     @Published var borrows: [BorrowResponse] = []
     @Published var expireds : [BorrowResponse] = []
     

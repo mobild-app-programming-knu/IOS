@@ -10,19 +10,25 @@ import SwiftUI
 struct AdminTabbarView: View {
     var user : User?
     @State private var selection = 2
+    @State var isTaken = false
+    @State var takenString = ""
     
     var body: some View {
         TabView(selection: $selection) {
-            AdminCameraView(user: user!)
+            AdminCameraView(user: user!, isTaken: $isTaken, takenString: $takenString)
                 .tabItem {
                     Image(systemName: "qrcode.viewfinder")
                     Text("반납")
                 }
+                
             adminFilter()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("대출목록")
                 }.tag(2)
+        }
+        .alert(isPresented: self.$isTaken){
+            return Alert(title: Text("결과"), message: Text(takenString), dismissButton: .default(Text("OK")))
         }
     }
 }

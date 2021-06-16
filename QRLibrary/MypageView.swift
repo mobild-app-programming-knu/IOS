@@ -38,7 +38,7 @@ struct MypageView : View {
                     ).accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
                 HStack {
-                    NavigationLink(destination: Text("연체"),
+                    NavigationLink(destination: MyExpiredList(),
                         label: {
                             Image(systemName: "calendar.badge.exclamationmark")
                             Text("연체")
@@ -81,6 +81,42 @@ struct CenteringView: View {
                     key: CenteringColumnPreferenceKey.self,
                     value: [CenteringColumnPreference(width: geometry.frame(in: CoordinateSpace.global).width)]
                 )
+        }
+    }
+}
+
+struct MyExpiredList : View {
+    @EnvironmentObject var borrows: Borrows
+    @State private var width: CGFloat? = nil
+    
+    var body: some View {
+        HStack {
+            Text("도서명")
+                .padding(.leading, 70)
+            Spacer()
+            Text("반납일")
+                .padding(.trailing, 70)
+        }
+        .frame(height: 40)
+        .background(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256).opacity(0.5))
+        .cornerRadius(10)
+
+        List(borrows.expireds, id: \.self){ borrow in
+            HStack {
+                Text(borrow.book.book_name)
+                    .frame(width: width, alignment: .leading)
+                    .lineLimit(1)
+                    .background(CenteringView())
+                Spacer()
+                Text(borrow.expiredAt)
+            }
+        }.onPreferenceChange(CenteringColumnPreferenceKey.self) { preferences in
+            for p in preferences {
+                let oldWidth = self.width ?? CGFloat.zero
+                if p.width > oldWidth {
+                    self.width = p.width
+                }
+            }
         }
     }
 }

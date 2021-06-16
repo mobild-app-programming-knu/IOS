@@ -88,7 +88,9 @@ private func doRestTask<F : Codable>(request: URLRequest, successCallback: @esca
                         }
                     }
                 }
-            case .failure(let error) : print(error)
+            case .failure(let error) :
+                print("network error")
+                print(error)
             }
         }
 }
