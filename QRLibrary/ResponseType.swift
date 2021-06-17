@@ -48,7 +48,17 @@ struct BorrowResponse : Codable & Hashable{
     var expiredAt: String
     var user_id : Int
     var user_name : String
-    var book: BookResponse
+    var book: Book
+}
+
+struct Book : Codable & Hashable{
+    var book_id : Int
+    var book_name : String
+    var author : String
+    var library : String
+    var publisher : String
+    var publication_date : String
+    var image_url : String
 }
 
 struct BookResponse : Codable & Hashable{
@@ -59,6 +69,7 @@ struct BookResponse : Codable & Hashable{
     var publisher : String
     var publication_date : String
     var image_url : String
+    var status : String
 }
 
 struct ReturnResponse : Codable & Hashable {

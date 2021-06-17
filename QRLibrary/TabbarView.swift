@@ -85,6 +85,7 @@ struct BookMakerCell: View {
             VStack(alignment: .leading) {
                 Text(book.book_name).font(.system(size: 25, weight: .semibold))
                 Text("\(book.library)")
+                Text("\(book.status)")
             }
         }
     }
