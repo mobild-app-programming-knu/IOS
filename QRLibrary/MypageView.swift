@@ -45,14 +45,6 @@ struct MypageView : View {
                         }
                     ).accentColor(Color(red: 242 / 255, green: 134 / 255, blue: 101 / 256))
                 }
-                HStack {
-                    NavigationLink(destination: Text("알림"),
-                        label: {
-                            Image(systemName: "bell")
-                            Text("알림")
-                        }
-                    )
-                }
             }
         }
         

@@ -66,7 +66,7 @@ struct BorrowList: View {
                     .lineLimit(1)
                     .background(CenteringView())
                 Spacer()
-                Text("대여일")
+                Text("대출일")
                 Spacer()
                 Text("반납일")
                 Spacer()
